@@ -2,7 +2,7 @@
 
 [![branch develop](https://img.shields.io/badge/branch-develop-blue.svg)]()
 [![version](https://img.shields.io/badge/version-0.0.0-blue.svg)](./package.json)
-[![linting](https://img.shields.io/badge/code_style-xo_nosemicolon-brightgreen.svg)](https://github.com/xojs/xo)
+[![linting](https://img.shields.io/badge/code_style-xo-brightgreen.svg)](https://github.com/xojs/xo)
 
 A blue/green demo testing with an Nginx reverse proxy.
 
