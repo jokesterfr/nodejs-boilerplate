@@ -1,7 +1,7 @@
 # Node.js boilerplate
 
 [![branch develop](https://img.shields.io/badge/branch-develop-blue.svg)]()
-[![version](https://img.shields.io/badge/version-0.0.0-blue.svg)](./package.json)
+[![version](https://img.shields.io/badge/version-0.0.1-blue.svg)](./package.json)
 [![linting](https://img.shields.io/badge/code_style-xo-brightgreen.svg)](https://github.com/xojs/xo)
 
 A blue/green demo testing with an Nginx reverse proxy.
@@ -24,7 +24,9 @@ npm start
 npm run release minor
 ```
 
-## Coverage
+> Note: the package.json "release" script entry uses a syntax trick I want to clarify here. In fact we rely on `npm --no-git-tag-version version <major|minor|patch>`, and npm just append the last CLI parameter to the above command.
+
+## Coverage
 
 ```sh
 npm run test
