@@ -14,7 +14,7 @@
     "build": "docker build . -t ${npm_package_name}:$(git describe --always | sed 's/^v//') -t ${npm_package_name}:latest",
     "prerelease": "npm --no-git-tag-version version $1",
     "release": "git flow release start ${npm_package_version} && npm run bump:readme && npm run bump:changelog",
-    "postrelease": "export GIT_MERGE_AUTOEDIT=no && git commit -a -m \"bump version ${npm_package_version}\" && git fetch origin master:master && git flow release finish --fetch --push --message \"${npm_package_version}\" --showcommands \"${npm_package_version}\"",
+    "postrelease": "git commit -a -m \"bump version ${npm_package_version}\" && git fetch origin master:master && GIT_MERGE_AUTOEDIT=no git flow release finish --fetch --push --message \"${npm_package_version}\" --showcommands \"${npm_package_version}\"",
     "bump:readme": "sed -i \"s/version-.*-blue/version-${npm_package_version}-blue/\" README.md #",
     "bump:changelog": "title=\"## Upcoming changes\";date=`date +%Y-%m-%d`;sed -i \"s/${title}/${title}\\n\\n## Version ${npm_package_version} - ${date}/\" CHANGELOG.md #"
   },
