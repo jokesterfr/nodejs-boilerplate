@@ -1,6 +1,7 @@
 # nodejs-boilerplate
 
 ## Upcoming changes
+* [FIX] Enhance documentation
 
 ## Version 0.0.2 - 2020-05-20
 * [FIX] Simplify releasing scripts

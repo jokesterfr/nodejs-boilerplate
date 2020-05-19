@@ -25,6 +25,8 @@ npm version minor
 npm run release
 ```
 
+> Note: this release script relies on [git-flow](https://github.com/nvie/gitflow/wiki/Installation).
+
 ## Coverage
 
 ```sh
