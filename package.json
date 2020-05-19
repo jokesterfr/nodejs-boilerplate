@@ -12,9 +12,7 @@
     "lint": "xo",
     "check": "npm run lint && npm audit",
     "build": "docker build . -t ${npm_package_name}:$(git describe --always | sed 's/^v//') -t ${npm_package_name}:latest",
-    "release": "npm --no-git-tag-version version",
-    "postrelease": "npm run release:gitflow",
-    "release:gitflow": "git checkout -b release/${npm_package_version} && git add package*.json && npm run bump:readme && npm run bump:changelog && git commit -a -m \"bump version ${npm_package_version}\" && git fetch origin master:master && GIT_MERGE_AUTOEDIT=no git flow release finish --fetch --push --message \"${npm_package_version}\" --showcommands \"${npm_package_version}\"",
+    "release": "git checkout -b release/${npm_package_version} && git add package*.json && npm run bump:readme && npm run bump:changelog && git commit -a -m \"bump version ${npm_package_version}\" && git fetch origin master:master && GIT_MERGE_AUTOEDIT=no git flow release finish --fetch --push --message \"${npm_package_version}\" --showcommands \"${npm_package_version}\"",
     "bump:readme": "sed -i \"s/version-.*-blue/version-${npm_package_version}-blue/\" README.md #",
     "bump:changelog": "title=\"## Upcoming changes\";date=`date +%Y-%m-%d`;sed -i \"s/${title}/${title}\\n\\n## Version ${npm_package_version} - ${date}/\" CHANGELOG.md #"
   },
