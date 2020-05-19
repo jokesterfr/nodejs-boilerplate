@@ -1,0 +1,82 @@
+{
+  "name": "blue-green-test",
+  "version": "0.0.0",
+  "description": "A node.js boilerplate",
+  "main": "./bin/server.js",
+  "scripts": {
+    "start": "node ./bin/server.js",
+    "start:watch": "nodemon ./bin/server.js",
+    "test": "c8 ava",
+    "test:watch": "c8 ava --watch",
+    "clean": "git -c core.excludesfile=/dev/null clean -X -d -f",
+    "lint": "xo",
+    "check": "npm run lint && npm audit",
+    "build": "docker build . -t ${npm_package_name}:$(git describe --always | sed 's/^v//') -t ${npm_package_name}:latest",
+    "prerelease": "npm --no-git-tag-version version $1; git flow release start ${npm_package_version};",
+    "release": "npm run bump:readme && npm run:changelog",
+    "postrelease": "export GIT_MERGE_AUTOEDIT=no; git add .; git commit -m \"bump version ${npm_package_version}\"; git fetch origin master:master; git flow release finish --fetch --push --message \"${npm_package_version}\" --showcommands \"${new_version}\"",
+    "bump:readme": "sed -i \"s/version-.*-blue/version-${npm_package_version}-blue/\" README.md",
+    "bump:changelog": "title=\"## Upcoming changes\";date=`date +%Y-%m-%d`;sed -i \"s/${title}/${title}\\n\\n## Version ${npm_package_version} - ${date}/\" CHANGELOG.md"
+  },
+  "author": "Clément Désiles <main@jokester.fr>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jokesterfr/nodejs-boilerplate.git"
+  },
+  "keywords": [
+    "boilerplate",
+    "express",
+    "http server",
+    "blue-green deployment"
+  ],
+  "dependencies": {
+    "express": "^4.17.1",
+    "meow": "^7.0.1"
+  },
+  "devDependencies": {
+    "ava": "^3.8.2",
+    "c8": "^7.1.2",
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2",
+    "xo": "^0.30.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "xo": {
+    "space": 2,
+    "rules": {
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "array-bracket-spacing": [
+        "error",
+        "always"
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ]
+    }
+  },
+  "ava": {
+    "files": [
+      "test/test-*.js"
+    ]
+  },
+  "c8": {
+    "reporter": [
+      "json",
+      "lcov",
+      "text"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test"
+    }
+  }
+}
