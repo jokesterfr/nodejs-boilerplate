@@ -1,7 +1,7 @@
 # Node.js boilerplate
 
 [![branch develop](https://img.shields.io/badge/branch-develop-blue.svg)]()
-[![version](https://img.shields.io/badge/version-0.0.1-blue.svg)](./package.json)
+[![version](https://img.shields.io/badge/version-0.0.2-blue.svg)](./package.json)
 [![linting](https://img.shields.io/badge/code_style-xo-brightgreen.svg)](https://github.com/xojs/xo)
 
 A blue/green demo testing with an Nginx reverse proxy.
