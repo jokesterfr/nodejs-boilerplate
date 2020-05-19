@@ -24,7 +24,9 @@ npm start
 npm run release minor
 ```
 
-## Coverage
+> Note: the package.json "release" script entry uses a syntax trick I want to clarify here. In fact we rely on `npm --no-git-tag-version version <major|minor|patch>`, and npm just append the last CLI parameter to the above command.
+
+## Coverage
 
 ```sh
 npm run test
